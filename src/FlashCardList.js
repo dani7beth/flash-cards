@@ -1,11 +1,11 @@
 import FlashCard from "./Card";
-import {List} from "semantic-ui-react";
+import {Grid, GridColumn, List} from "semantic-ui-react";
 
 const FlashCardList = ({listOfCards, updateHandler, remove}) =>{
     let renderCards = () =>{
         return listOfCards.map((c) => {
             return (
-                <FlashCard
+            <FlashCard
                 key={c.id}
                 {...c}
                 removeCard={remove}

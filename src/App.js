@@ -51,7 +51,7 @@ class App extends React.Component {
     const {cards, showAnswer} = this.state;
     return (
       <Container style={{marginTop: "7%"}}>
-          <Header as="h1" style={{textAlign: "center"}}>Flash Cards</Header>
+          <Header class="h1" as="h1" style={{textAlign: "center"}}>Flash Cards</Header>
            {showAnswer && 
            <FlashForm addCard={this.addCard} hideAddForm={this.toggleAnswer} />
            }
