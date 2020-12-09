@@ -1,6 +1,7 @@
 import {useState} from 'react';
+// import FlashForm from './FlashForm';
 import {Button,Card, Image} from 'semantic-ui-react';
-// import FlashForm from './FlashCardList';
+import FlashForm from './FlashForm';
 const FlashCard = ({term, concept, id, updateHandler, removeCard}) => {
     
     const [showAnswer, setShowAnswer] = useState(false);
@@ -11,7 +12,7 @@ const FlashCard = ({term, concept, id, updateHandler, removeCard}) => {
         <Card>
       <Card.Content>
         <Card.Header>{concept}</Card.Header>
-        {/* <Button icon="pencil" onClick={() => setShowForm(!showForm)} /> */}
+        <Button icon="pencil" onClick={() => setShowForm(!showForm)} />
 
         <Button icon="trash" color="red" onClick={()=> removeCard(id)} />
       </Card.Content>
@@ -20,7 +21,17 @@ const FlashCard = ({term, concept, id, updateHandler, removeCard}) => {
       </Card.Content>
         <Button onClick={() => setShowAnswer(!showAnswer)}>{showAnswer ? "Close Answer" : "Show Answer"}</Button>
         </Card>
-      </Card.Group> 
+        {showForm && (
+            <FlashForm 
+        editCard={updateHandler} 
+        id={id}
+        term={term}
+        concept={concept}
+        hideEditForm={() => setShowForm(false)}
+        />
+        )}
+      </Card.Group>
+       
     );
 };
 export default FlashCard;
